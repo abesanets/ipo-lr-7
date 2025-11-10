@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "Camry",
+        "manufacturer": "Toyota",
+        "is_petrol": true,
+        "tank_volume": 60
+    },
+    {
+        "id": 2,
+        "name": "Model S",
+        "manufacturer": "Tesla",
+        "is_petrol": false,
+        "tank_volume": 0
+    },
+    {
+        "id": 3,
+        "name": "Civic",
+        "manufacturer": "Honda",
+        "is_petrol": true,
+        "tank_volume": 50
+    },
+    {
+        "id": 4,
+        "name": "Octavia",
+        "manufacturer": "Skoda",
+        "is_petrol": true,
+        "tank_volume": 55
+    },
+    {
+        "id": 5,
+        "name": "X5",
+        "manufacturer": "BMW",
+        "is_petrol": true,
+        "tank_volume": 70
+    },
+    {
+        "id": 6,
+        "name": "Challenger",
+        "manufacturer": "Dodge",
+        "is_petrol": true,
+        "tank_volume": 60
+    },
+    {
+        "id": 7,
+        "name": "Mustang GT",
+        "manufacturer": "Ford",
+        "is_petrol": true,
+        "tank_volume": 77
+    },
+    {
+        "id": 8,
+        "name": "Vivaro",
+        "manufacturer": "Opel",
+        "is_petrol": false,
+        "tank_volume": 888888888
+    }
+]
