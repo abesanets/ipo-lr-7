@@ -22,30 +22,17 @@ if not os.path.exists(filename):
 # Счётчик операций (кроме выхода)
 operations_count = 0
 
-while True:
-    print("\nМеню:")
-    print("1. Вывести все записи")
-    print("2. Вывести запись по id")
-    print("3. Добавить запись")
-    print("4. Удалить запись по id")
-    print("5. Выйти из программы")
+def allrecords():
+    print("\nВсе записи:")
+    for i, car in enumerate(cars):
+        print(f"{i+1}. ID: {car['id']}, Модель: {car['name']}, "
+              f"Производитель: {car['manufacturer']}, "
+              f"Бензин: {'Да' if car['is_petrol'] else 'Нет'}, "
+              f"Объем бака: {car['tank_volume']} л")
+    global operations_count
+    operations_count += 1
 
-    choice = input("Выберите пункт меню (1-5): ")
-
-    # Загружаем текущие данные
-    with open(filename, "r", encoding="utf-8") as f:
-        cars = json.load(f)
-
-    if choice == "1":
-        print("\nВсе записи:")
-        for i, car in enumerate(cars):
-            print(f"{i+1}. ID: {car['id']}, Модель: {car['name']}, "
-                  f"Производитель: {car['manufacturer']}, "
-                  f"Бензин: {'Да' if car['is_petrol'] else 'Нет'}, "
-                  f"Объем бака: {car['tank_volume']} л")
-        operations_count += 1
-
-    elif choice == "2":
+def idsearch():
         search_id = input("Введите id записи для поиска: ")
         found = False
         for i, car in enumerate(cars):
@@ -56,9 +43,10 @@ while True:
                 break
         if not found:
             print("Запись с таким id не найдена.")
+        global operations_count
         operations_count += 1
 
-    elif choice == "3":
+def newcar():
         try:
             new_id = int(input("Введите id: "))
             name = input("Введите модель: ")
@@ -81,9 +69,10 @@ while True:
             print("Запись успешно добавлена.")
         except ValueError:
             print("Ошибка ввода! Проверьте корректность данных.")
+        global operations_count
         operations_count += 1
 
-    elif choice == "4":
+def deletecar():
         del_id = input("Введите id записи для удаления: ")
         found = False
         for i, car in enumerate(cars):
@@ -96,13 +85,43 @@ while True:
                 break
         if not found:
             print("Запись с таким id не найдена.")
+        global operations_count
         operations_count += 1
 
-    elif choice == "5":
-        print(f"\nКоличество выполненных операций: {operations_count}")
-        print("Выход из программы...")
-        break
+def exit():
+    print(f"\nКоличество выполненных операций: {operations_count}")
+    print("Выход из программы...")
 
+while True:
+    print("\nМеню:")
+    print("1. Вывести все записи")
+    print("2. Вывести запись по id")
+    print("3. Добавить запись")
+    print("4. Удалить запись по id")
+    print("5. Выйти из программы")
+
+    choice = input("Выберите пункт меню (1-5): ")
+
+    # Загружаем текущие данные
+    with open(filename, "r", encoding="utf-8") as f:
+        cars = json.load(f)
+
+    if choice == "1":
+        allrecords()
+
+    elif choice == "2":
+        idsearch()
+
+    elif choice == "3":
+        newcar()
+
+    elif choice == "4":
+        deletecar()
+
+    elif choice == "5":
+        exit()
+        break
+        
     else:
         print("Неверный пункт меню. Попробуйте снова.")
 
